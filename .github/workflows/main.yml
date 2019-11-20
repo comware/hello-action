@@ -11,7 +11,7 @@ jobs:
       - uses: ./ # Uses an action in the root directory
       - name: Hello world action step
         id: hello
-        uses: comware/hello-world@master
+        uses: comware/hello-world@v1
         with:
           who-to-greet: 'Jim Alateras'
       # Use the output from the `hello` step
