@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: comware/hello-action@master
+        uses: actions/hello-world-docker-action@master
         with:
           who-to-greet: 'Jim Alateras'
      - name: Get the output time
