@@ -11,7 +11,7 @@ jobs:
       - uses: ./ # Uses an action in the root directory
       - name: Hello world action step
         id: hello
-        uses: actions/hello-world-docker-action@v1
+        uses: comware/hello-world@master
         with:
           who-to-greet: 'Jim Alateras'
       # Use the output from the `hello` step
