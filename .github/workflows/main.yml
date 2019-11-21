@@ -11,7 +11,7 @@ jobs:
       - uses: ./
       - name: Hello world action step
         id: hello
-        uses: comware/hello-world@v1
+        uses: comware/hello-action@v1
         with:
           who-to-greet: 'Jim Alateras'
       # Use the output from the `hello` step
