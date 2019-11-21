@@ -6,26 +6,18 @@ jobs:
     name: A job to say hello
     steps:
       # To use this repository's private action, you must check out the repository
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v1
-      - uses: ./
-      - name: Hello world action step
-        id: hello
-        uses: comware/hello-action@v1
-        with:
-          who-to-greet: 'Jim Alateras'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-      - uses: docker://comware/up:1.4.2
+      - name: deploy
+        uses: docker://comware/up:1.4.2
         env:
-          NPM_TOKEN: "1234567"
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         with:
           entrypoint: /bin/sh
           args: |
             -c "\
             echo "registry=http://registry.npmjs.org/" > ~/.npmrc &&
             echo "@hillridgetech:registry=https://npm.pkg.github.com/" >> ~/.npmrc &&
-            echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc &&
+            echo "//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc &&
             up --help &&
             cat ~/.npmrc"
