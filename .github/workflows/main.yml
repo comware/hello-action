@@ -16,8 +16,8 @@ jobs:
           entrypoint: /bin/sh
           args: |
             -c "\
-            echo "registry=http://registry.npmjs.org/" > ~/.npmrc &&
-            echo "@hillridgetech:registry=https://npm.pkg.github.com/" >> ~/.npmrc &&
-            echo "//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc &&
-            up --help &&
+            echo "registry=http://registry.npmjs.org/" > ~/.npmrc && \
+            echo "@hillridgetech:registry=https://npm.pkg.github.com/" >> ~/.npmrc && \
+            echo "//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc && \
+            up --help && \
             cat ~/.npmrc"
