@@ -22,4 +22,5 @@ jobs:
           entrypoint: /bin/sh
           args: |
             -c "\
-            up --help"
+            up --help &&
+            find ."
