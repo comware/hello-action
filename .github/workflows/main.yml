@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+      env:
+        NPM_TOKEN: "1234567"
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v1
@@ -20,8 +22,6 @@ jobs:
       - uses: docker://comware/up:1.4.2
         with:
           entrypoint: /bin/sh
-          env:
-            NPM_TOKEN: "1234567"
           args: |
             -c "\
             echo "registry=http://registry.npmjs.org/" > ~/.npmrc &&
