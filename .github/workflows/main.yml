@@ -20,10 +20,12 @@ jobs:
       - uses: docker://comware/up:1.4.2
         with:
           entrypoint: /bin/sh
+          env:
+            NPM_TOKEN: "1234567"
           args: |
             -c "\
             echo "registry=http://registry.npmjs.org/" > ~/.npmrc &&
             echo "@hillridgetech:registry=https://npm.pkg.github.com/" >> ~/.npmrc &&
-            echo "//npm.pkg.github.com/:_authToken=1234" >> ~/.npmrc &&
+            echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc &&
             up --help &&
-            cat ~/.npmrc ."
+            cat ~/.npmrc"
