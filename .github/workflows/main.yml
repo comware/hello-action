@@ -5,8 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      env:
-        NPM_TOKEN: "1234567"
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v1
@@ -20,6 +18,8 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - uses: docker://comware/up:1.4.2
+        env:
+          NPM_TOKEN: "1234567"
         with:
           entrypoint: /bin/sh
           args: |
